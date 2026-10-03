@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard - Examen Big Data</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <nav class="navbar">
+    <h1> Dashboard - Examen Big Data</h1>
+    <div class="user-info">
+      <span> <b id="userName"></b></span>
+      <button class="btn-logout" onclick="Auth.logout()">Cerrar sesión</button>
+    </div>
+  </nav>
+
+  <div class="container">
+    <div class="tabs">
+      <button class="tab active" data-panel="panel-2-1">2.1 Aeropuertos</button>
+      <button class="tab" data-panel="panel-2-2">2.2 Desempeño mensual</button>
+      <button class="tab" data-panel="panel-2-3">2.3 Rutas rentables</button>
+      <button class="tab" data-panel="panel-2-4">2.4 Ranking mensual</button>
+      <button class="tab" data-panel="panel-3-1">3.1 Precio por tipo</button>
+      <button class="tab" data-panel="panel-3-2">3.2 Anuncios filtrados</button>
+      <button class="tab" data-panel="panel-3-3">3.3 Top revisores</button>
+      <button class="tab" data-panel="panel-3-4">3.4 Buscar reseñas</button>
+    </div>
+
+    <!-- Panel 2.1 -->
+    <div class="panel active" id="panel-2-1">
+      <h2>2.1 Top 3 aeropuertos origen/destino por país</h2>
+      <div class="param-form">
+        <div class="form-group">
+          <label>País</label>
+          <input type="text" id="pais21" value="SPAIN">
+        </div>
+        <button class="btn" onclick="cargar21()">Consultar</button>
+      </div>
+      <div id="result21" class="loading">Selecciona un país y haz clic en Consultar</div>
+    </div>
+
+    <!-- Panel 2.2 -->
+    <div class="panel" id="panel-2-2">
+      <h2>2.2 Desempeño mensual de las aerolíneas</h2>
+      <button class="btn" onclick="cargar22()">Cargar datos</button>
+      <div id="result22" class="loading">Haz clic en Cargar datos</div>
+    </div>
+
+    <!-- Panel 2.3 -->
+    <div class="panel" id="panel-2-3">
+      <h2>2.3 Top 50 rutas más rentables (>70 vuelos)</h2>
+      <button class="btn" onclick="cargar23()">Cargar datos</button>
+      <div id="result23" class="loading">Haz clic en Cargar datos</div>
+    </div>
+
+    <!-- Panel 2.4 -->
+    <div class="panel" id="panel-2-4">
+      <h2>2.4 Ranking mensual de aerolíneas (Top 5)</h2>
+      <button class="btn" onclick="cargar24()">Cargar datos</button>
+      <div id="result24" class="loading">Haz clic en Cargar datos</div>
+    </div>
+
+    <!-- Panel 3.1 -->
+    <div class="panel" id="panel-3-1">
+      <h2>3.1 Precio medio por tipo de propiedad</h2>
+      <button class="btn" onclick="cargar31()">Cargar datos</button>
+      <div id="result31" class="loading">Haz clic en Cargar datos</div>
+    </div>
+
+    <!-- Panel 3.2 -->
+    <div class="panel" id="panel-3-2">
+      <h2>3.2 Anuncios filtrados</h2>
+      <div class="param-form">
+        <div class="form-group">
+          <label>Mínimo comodidades</label>
+          <input type="number" id="amenities32" value="5">
+        </div>
+        <div class="form-group">
+          <label>Rating mínimo</label>
+          <input type="number" id="rating32" value="90">
+        </div>
+        <button class="btn" onclick="cargar32()">Consultar</button>
+      </div>
+      <div id="result32" class="loading">Ajusta los filtros y haz clic en Consultar</div>
+    </div>
+
+    <!-- Panel 3.3 -->
+    <div class="panel" id="panel-3-3">
+      <h2>3.3 Top revisores con más reseñas</h2>
+      <div class="param-form">
+        <div class="form-group">
+          <label>¿Cuántos mostrar?</label>
+          <input type="number" id="top33" value="5">
+        </div>
+        <button class="btn" onclick="cargar33()">Consultar</button>
+      </div>
+      <div id="result33" class="loading">Ajusta el número y haz clic en Consultar</div>
+    </div>
+
+    <!-- Panel 3.4 -->
+    <div class="panel" id="panel-3-4">
+      <h2>3.4 Buscar texto en reseñas</h2>
+      <div class="param-form">
+        <div class="form-group" style="flex:1; min-width: 300px;">
+          <label>Texto a buscar</label>
+          <input type="text" id="texto34" value="Great Location">
+        </div>
+        <button class="btn" onclick="cargar34()">Buscar</button>
+      </div>
+      <div id="result34" class="loading">Escribe un texto y haz clic en Buscar</div>
+    </div>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>
